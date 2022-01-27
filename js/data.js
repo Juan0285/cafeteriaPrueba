@@ -1,37 +1,22 @@
-
-// import { Carrito } from "./index";
-
-// import { Producto } from "./index";
-
-// export const listaCarrito = new Carrito ([]);
-
-// const Producto_1 = new Producto(1 , "Alfajor Havnna" , 125 , 100) 
-
-// const Producto_2 = new Producto(2 , "Conito Havnna" , 120 , 200) 
-
-// listaCarrito.push(Producto_1);
-
-// listaCarrito.push(Producto_2);
+const items = document.getElementById ("items");
+const template = document.getElementById ("template-card").content ;
+const fragment = document.createDocumentFragment();
 
 
+document.addEventListener ('DOMContentLoaded', ()=> {fetchData()});
 
-let nombres = [
-    {nombre: "juan", edad: 45},
-    {nombre: "martin", edad: 85 },
-    {nombre: "amalia", edad: 15 }
-]
+const fetchData = async()=> {
 
-
-const pregunta = prompt("cual es tu nombre")
-
-
-
-for (prop in nombres) {
-    console.log (nombres[prop].nombre)
+    try {
+        const res = await fetch ('api.json');
+        const data = await res.json();
+        pintarCards(data);
+    }
+    catch (error){
+        console.log (error);
+    }
 }
 
-
-if (pregunta == "juan") {
-    texto = document.getElementById("oo");
-    texto.innerHTML = `tu edad es ${nombres[prop].nombre}`
-} 
+const pintarCards = data=> {
+    console.log (data)
+}
